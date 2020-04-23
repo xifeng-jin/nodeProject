@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=book.bookname%></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #efefee;
+        }
+        .header {
+            height: 170px;
+            width: 100%;
+            min-width: 1200px;
+
+            background-color: #000;
+        }
+        .header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .navheader {
+            height: 110px;
+            width: 100%;
+            background-image: url(/images/font.jpg);
+            background-position: top center;
+            background-size: auto 120px;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        .nav {
+            width: 100%;
+            height: 60px;
+            background:rgba(51, 46, 46, 0.8);
+        }
+        .navList {
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .link {
+            width: 100px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            color: #ffffff;
+
+        }
+        .search {
+            width: 300px;
+            height: 60px;
+            display: flex;
+        }
+        .search input {
+            border: none;
+            outline: none;
+            line-height: 60px;
+            height: 60px;
+            width: 200px;
+            padding: 0 20px;
+            background: rgba(19, 14, 14, 0.3);
+            color: #ffffff;
+            font-size: 20px;
+        }
+        .search button {
+            width: 100px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            outline: none;
+        }
+        .search button .icon {
+            background-image: url(/images/icon.png);
+            height: 30px;
+            width: 30px;
+            background-repeat: no-repeat;
+            background-size: 30px 30px;
+            background-position: center;
+        }
+
+        .content {
+            margin: 10px 0 0 70px;
+            display: flex;
+        }
+        .bookList {
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .bookList a {
+            text-decoration: none;
+            color: gray;
+        }
+        .bookItem {
+            width: 240px;
+            margin: 20px 5px 10px;
+            height: 320;
+            text-align: center;
+            position: relative;
+            font-family: '微软雅黑';
+
+            box-shadow: 0 1px 2px #efefee;
+            background-color: #ffffff;
+        }
+        .bookItem img {
+            margin: 10px auto 0;
+            width: 80%;
+            max-height: 220px;
+            height: auto;
+        }
+        .bookItem h3 {
+            font-size: 18px;
+            width: 70%;
+            margin: 10px auto;
+            border-bottom: 1px dashed #cccccc;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .bookItem p {
+            font-size: 16px;
+        }
+        .bookItem .category {
+            position: absolute;
+            width: 80px;
+            height: 30px;
+            left: 10px;
+            top: 10px;
+            text-align: center;
+            line-height: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+        }
+        .content .ewm {
+            flex: 1;
+        }
+        .content .ewm img {
+            width: 100%;
+        }
+
+        .box {
+            display: flex;
+            border: 1px solid green;
+            font-family: '微软雅黑';
+            padding: 20px;
+        }
+        .content1 {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        .content1  .a {
+            font-weight: bold;
+            letter-spacing: 5px;
+            font-size: 25px;
+            padding-bottom: 10px;
+        }
+        .content1  .b  .b1 {
+            margin-right: 150px;
+        }
+        .content1  .b  .b2 {
+            border-bottom: 1px dashed #eeeeee;
+        }
+        .content1  .c {
+            width: 400px;
+            margin-top: 50px;
+        }
+    </style>
+<body>
+    <div class="header">
+        <div class="navheader"></div>
+        <div class="nav">
+            <div class="navList">
+                <div class="link"><a href="/">首页</a></div>
+                <% for (let i = 0 ; i < category.length ; i ++) {%>
+                    <div class="link">
+                        <a href="/category/<%=category[i].id%>">
+                            <%=category[i].category%>
+                        </a>
+                    </div>
+                <%}%>
+
+                <div class="search">
+                    <input type="text">
+                    <button><span class="icon"></span><span class="text">搜索</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="huo.js"></script> -->
+    <div class="content">
+        <div class="bookList">
+            <div class="box">
+                <div class="img">
+                    <img src="<%=book.bookImg%>" alt="">
+                </div>
+                <div class="content1">
+                    <div class="a"><%=book.bookname%></div>
+                    <div class="b">
+                        <span class="b1">作&nbsp&nbsp&nbsp&nbsp者：<%=book.author%></span>
+                        <span class="b2">发布时间：<%=book.publishTime%></span>
+                    </div>
+                    <div class="c">
+                        <%=book.bbrief%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ewm">
+            <img src="https://sobooks.cc/AD/330push.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>
